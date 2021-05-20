@@ -11,7 +11,7 @@ const hbs = exphbs.create({helpers});
 const session = require('express-session');
 
 const app = express();
-const PORT = process.env.PORT || 3306;
+const port = process.env.port || 3306;
 
 const SequelizeStore = require('connect-sesssion-sequalize')(sess.Store);
 
@@ -32,5 +32,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequalize.sync({ force: false }).then( () => {
-    app.listen(PORT, () => console.log('Now listening'))
+    app.listen(port, () => console.log('Now listening'))
 });
