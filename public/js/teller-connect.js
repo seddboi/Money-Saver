@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log("Teller Connect has initialized");
         },
         onSuccess: function(enrollment) {
-          console.log("User enrolled successfully", enrollment.accessToken);
+          console.log("User enrolled successfully", enrollment);
+          console.log(enrollment);
           let aToken = enrollment.accessToken;
           console.log(aToken);
         },
@@ -21,6 +22,3 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
-// import { atoken } from './views/test-page.html'
-
-// console.log(aToken);
