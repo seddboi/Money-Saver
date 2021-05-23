@@ -1,3 +1,5 @@
+// Main teller-connect connection code provided by the documenttion website from Teller
+// Link: https://teller.io/docs/teller-connect
 document.addEventListener("DOMContentLoaded", function() {
     var tellerConnect = TellerConnect.setup({
         applicationId: "app_niva4bnsonc3orr178000",

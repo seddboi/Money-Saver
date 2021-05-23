@@ -1,3 +1,5 @@
+// this is the main code for the server connection
+
 // const express = require('express');
 // const sequelize = require('./config/connection');
 // const routes = require('./controllers');
@@ -27,13 +29,16 @@
 
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: true}));
-// app.use(express.static(path.join(__dirname, 'test-page.html')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(routes);
 
 // sequelize.sync({ force: false }).then( () => {
 //     app.listen(port, () => console.log('Now listening'))
 // });
+
+// ----------------------------------------------------------------------------------
+// This is used to test the teller-connect button page
 
 const express = require('express');
 const path = require('path');

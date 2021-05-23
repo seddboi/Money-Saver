@@ -11,35 +11,13 @@
 </head>
 
 <body>
-    <!-- When element is clicked, Teller Connect will open -->
+    <!-- Insert this button to our liking witin the secondary login page to connect their bank account-->
     <button id="teller-connect">Connect to your bank</button>
 
-    <!-- Body of your page... -->
+    <!-- place these tags at bottom of body -->
+    <!-- adjust the first tag to match loction of teller-connect.js (leaving it in public/js should be fine) -->
     <script src='js/teller-connect.js'></script>    
     <script src="https://cdn.teller.io/connect/connect.js"></script>
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          var tellerConnect = TellerConnect.setup({
-            applicationId: "app_niva4bnsonc3orr178000",
-            environment: 'development',
-            onInit: function() {
-              console.log("Teller Connect has initialized");
-            },
-            onSuccess: function(enrollment) {
-              console.log("User enrolled successfully", enrollment.accessToken);
-              let aToken = enrollment.accessToken;
-              return aToken;
-            },
-            onExit: function() {
-              console.log("User closed Teller Connect");
-            }
-          });
-  
-          var el = document.getElementById("teller-connect");
-          el.addEventListener("click", function() {
-            tellerConnect.open();
-          });
-        });
-    </script> -->
+    
 </body>
 </html>
