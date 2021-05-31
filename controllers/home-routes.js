@@ -4,7 +4,9 @@
 const router = require('express').Router();
 const user = require('../models/user');
 
-// if we can get the Teller-io authorization to work...middleware
-// this can also all api fetch requests as well
-const tellerAuth = require('../utils/teller-auth');
+
+// Cancelled plans to utilize this functionality
+// // if we can get the Teller-io authorization to work...middleware
+// // this can also all api fetch requests as well
+// const tellerAuth = require('../utils/teller-auth');
 
