@@ -1,4 +1,6 @@
-const app = express();
+// this is the main code for the server connection
+
+const express = require('express');
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
 const path = require('path');
@@ -13,7 +15,7 @@ const session = require('express-session');
 const app = express();
 const port = process.env.port || 3306;
 
-const SequelizeStore = require('connect-sesssion-sequalize')(sess.Store);
+const SequelizeStore = require('connect-sesssion-sequelize')(sess.Store);
 
 const sess = {
     secret: 'the lords cheeps',
@@ -31,6 +33,26 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-sequalize.sync({ force: false }).then( () => {
+sequelize.sync({ force: false }).then( () => {
     app.listen(port, () => console.log('Now listening'))
 });
+
+// ----------------------------------------------------------------------------------
+// DISCONTINUED USE OF THIS
+// This is used to test the teller-connect button page
+
+// const express = require('express');
+// const path = require('path');
+
+// // Sets up the Express App
+// const app = express();
+// const PORT = process.env.PORT || 3001;
+
+// app.use(express.static(path.join(__dirname, 'public')));
+// // Sets up the routes
+// app.use(require('./controllers/index'));
+
+// // Starts the server to begin listening
+// app.listen(PORT, () => {
+//   console.log('Server listening on: http://localhost:' + PORT);
+// });

@@ -1,3 +1,5 @@
+// simple sequelize connection made to DB
+// not being utilized to test out teller-connect button feature page
 const Sequelize = require('sequelize');
 
 require('dotenv').config();
