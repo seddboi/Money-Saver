@@ -1,7 +1,7 @@
 // Here are going to be all of the main homepage routes
 // These are meant to load all potential information that we may need
 const router = require('express').Router();
-const user = require('../models/user');
+const models = require('../models');
 
 // Cancelled plans to utilize this functionality
 // // if we can get the Teller-io authorization to work...middleware
@@ -27,7 +27,7 @@ const user = require('../models/user');
 //     }
 // };
 
-router.get('/home', (req,res) => {
+router.get('/', (req,res) => {
     // load initial items onto page
 })
 
