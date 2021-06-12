@@ -1,4 +1,3 @@
-const app = express();
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
 const path = require('path');
@@ -30,7 +29,10 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
+app.engine(handlebars, exphbs ({ defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 sequalize.sync({ force: false }).then( () => {
     app.listen(port, () => console.log('Now listening'))
 });
+

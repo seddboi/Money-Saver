@@ -1,0 +1,60 @@
+nav {
+  display: flex;
+  border: ridge;
+  background-color: black;
+}
+
+nav a {
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-weight: bolder;
+}
+
+
+.jumbotron{
+  color: #FFFFFF;
+  font-weight: bolder;
+  background-color:#04aa6d !important;
+  }
+
+form {
+  border: 3px solid #f1f1f1;
+}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border: none;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.3;
+}
+
+
+.container {
+  padding: 20px;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+
+}
