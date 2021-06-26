@@ -1,38 +1,42 @@
-const sequelize = require('./config/connection');
-const routes = require('./controllers');
-const path = require('path');
+  const express = require('express');
+  const app = express();
+  const exphbs  = require('express-handlebars');
+  const bcrypt = require ('bcrypt')
+  const path = require('path');
+  const flash = require('express-flash')
+  const passport = require('passport')
+  const session = require('express-session');
+  const methodOver = require('method-override')
+//   const sequelize = require('./config/connection');
 
-const help = require('./utils/helpers');
 
-const exphbs = require('express-handlebars');
-const hbs = exphbs.create({helpers});
+  // const routes = require('./controllers');
+const routes = require('./router')
 
-const session = require('express-session');
 
-const app = express();
-const port = process.env.port || 3306;
-
-const SequelizeStore = require('connect-sesssion-sequalize')(sess.Store);
-
-const sess = {
-    secret: 'the lords cheeps',
-    cookie: {},
+  const PORT = process.env.PORT || 3000;
+  
+//   const SequelizeStore = require('connect-session-sequelize')(session.Store);
+  
+  
+  app.engine('handlebars', exphbs());
+  app.set('view engine', 'handlebars');
+  
+  
+  
+  app.use(express.urlencoded({ extended: false }));
+  app.use(flash())
+  app.use(session({
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
-    store: new SequelizeStore({
-        db: sequelize,
-    }),
-};
+    saveUninitialized: false
+  }));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(routes);
-app.engine(handlebars, exphbs ({ defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
-
-sequalize.sync({ force: false }).then( () => {
-    app.listen(port, () => console.log('Now listening'))
-});
-
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(methodOver('_method'));
+  app.use(express.static('public'));
+  
+  app.use(routes);
+  
+  app.listen(PORT,() => console.log(`Now listening to port ${PORT}`));

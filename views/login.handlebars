@@ -1,19 +1,15 @@
 <form action="/login" method="POST">
 
-{{!-- {{#if (messages.error)}}
-{{messages.error}}
-{{/if}} --}}
-
   <div class="container">
     <h1>Login</h1>
     <p>Please login below:</p>
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter email" name="email" required>
+    <input type="text" placeholder="Enter email" name="email-login" required>
 
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter password" name="password" required>
+    <input type="password" placeholder="Enter password" name="password-login" required>
 
     <button type="submit">Login</button>
   </div>
@@ -21,3 +17,5 @@
 </form>
 
 <a href="/signup">Sign Up</a>
+
+<script src="./login.handlebars"></script>

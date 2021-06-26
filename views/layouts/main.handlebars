@@ -15,9 +15,26 @@
   </header>
 
 
-    <div class="login">
+    {{!-- <div>
+      {{{body}}}
+    </div> --}}
+
+    </header>
+  <nav>
+    {{#if loggedIn}}
+    <button id="logout" class="btn-no-style">Logout</button>
+    {{/if}}
+  </nav>
+  <main>
       {{{body}}}
     </div>
+  </main>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
 
 
 </html>
