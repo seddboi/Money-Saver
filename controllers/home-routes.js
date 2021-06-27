@@ -34,7 +34,6 @@ const withAuth = require('../utils/uth');
           {
             model: Painting,
             attributes: [
-                'id',
                 'bucket',
                 'category',
                 'amount',

@@ -6,12 +6,6 @@ class Finance extends Model { }
 
 Finance.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     bucket: {
       type: DataTypes.STRING,
       allowNull: false,
