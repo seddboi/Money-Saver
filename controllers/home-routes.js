@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Finance } = require('../models/Finance')
-const withAuth = require('../utils/uth');
+const withAuth = require('../utils/auth');
 
 // router.get('/', async (req, res) => {
 //     try {
@@ -27,12 +27,12 @@ const withAuth = require('../utils/uth');
 //     }
 //   });
   
-  router.get('/', withAuth, async (req, res) => {
+  router.get('/finance', withAuth, async (req, res) => {
     try {
       const dbFinanceData = await Finance.findByPk(req.params.id, {
         include: [
           {
-            model: Painting,
+            model: Finance,
             attributes: [
                 'bucket',
                 'category',
@@ -59,6 +59,25 @@ const withAuth = require('../utils/uth');
   
     res.render('login');
   });
+
+  router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('signup');
+  });
+
+  router.get('/', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+   res.render('home');
+  });
+
+   
   
   module.exports = router;
   
