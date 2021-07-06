@@ -1,14 +1,9 @@
 const router = require('express').Router();
-// const path = require('path');
 
-// router.get('/', async (req, res) => {
-//     res.sendFile(path.join(__dirname, '../views/test-page.html'));
-// });
+const api = require('./api');
+const home = require('./home-routes.js');
 
-// module.exports = router;
+router.use('/', home);
+router.use('/api', api);
 
-
-// --------------------------------------------------------------------------------
-// Start of re-routing index file
-
-
+module.exports = router;
