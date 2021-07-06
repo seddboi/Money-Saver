@@ -20,17 +20,23 @@
             </button> --}}
         
             <ul class="navbar-nav mb-2 mb-lg-0">
+                {{#if loggedIn}}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Signup</a>
+                    <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/signup">Signup</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Login</a>
+                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
                 </li>
+                {{/if}}
             </ul>    
         </div>
     </nav>
@@ -38,8 +44,12 @@
     <div class="jumbotron d-flex flex-column justify-content-center">
         <h1 class='display-4'>Welcome to Money Saver!</h1>
         <h2>The best place to budget your expenses!</h2>
+        {{#if loggedIn}}
+        <button class='button' href='/'>View My Page</button>
+        {{else}}
         <hr class="my-4">
         <h2>To continue, select either Signup or Login buttons above!</h2>
+        {{/if}}
     </div>
 
 
