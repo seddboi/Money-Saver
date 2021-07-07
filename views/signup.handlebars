@@ -1,0 +1,25 @@
+<form action="/signup" method="POST">
+  
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please create an account below:</p>
+    <hr>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter name" id="name" name="name" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" id="email" name="email" required>
+
+    <label for="pass"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="password" name="password" required>
+
+    <div class="clearfix">
+      <button type="submit" id = "submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+<a href="/login">login</a>
+
+<script src="/js/signup.js"></script>

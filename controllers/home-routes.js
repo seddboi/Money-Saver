@@ -1,33 +1,92 @@
-// Here are going to be all of the main homepage routes
-// These are meant to load all potential information that we may need
 const router = require('express').Router();
-const user = require('../models/user');
+const { Finance } = require('../models/Finance')
+const withAuth = require('../utils/auth');
 
-// Cancelled plans to utilize this functionality
-// // if we can get the Teller-io authorization to work...middleware
-// // this can also all api fetch requests as well
-// const tellerAuth = require('../utils/teller-auth');
-
-// const maxBudget = document.querySelector('#user-spend-budget-max').value;
-// const minBudget = document.querySelector('#user-spend-budget-min').value;
-// const averageIncome = document.querySelector('#user-average-income').value;
-// const incomeSchedule = () => {
-//     let selectedOption = document.querySelector('#payment-schedule').value;
-
-//     if (selectedOption == 'weekly') {
-//         let monthlyIncome = averageIncome * 4;
-//         monthlyIncome = parseFloat(monthlyIncome).toFixed(2);
-//     } else if (selectedOption == 'biweekly') {
-//         // set recurring payment to every 14 days
-//         let monthlyIncome = averageIncome * 2;
-//         monthlyIncome = parseFloat(monthlyIncome).toFixed(2);
-//     } else {
-//         // set recurring payment to every 30 days
-//         let monthlyIncome = parseFloat(averageIncome).toFixed(2);
+// router.get('/', async (req, res) => {
+//     try {
+//       const dbFinanceData = await Finance.findAll({
+//         include: [
+//           {
+//             model: Painting,
+//             attributes: ['filename', 'description'],
+//           },
+//         ],
+//       });
+  
+//       const finances = dbFinanceData.map((finance) =>
+//         finance.get({ plain: true })
+//       );
+  
+//       res.render('home', {
+//         finances,
+//         loggedIn: req.session.loggedIn,
+//       });
+//     } catch (err) {
+//       console.log(err);
+//       res.status(500).json(err);
 //     }
-// };
+//   });
 
-router.get('/home', (req,res) => {
-    // load initial items onto page
-})
 
+router.get('/home', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('home');
+    return;
+  }
+  res.redirect('/login');
+});
+  
+  router.get('/home', withAuth, async (req, res) => {
+    try {
+      const dbFinanceData = await Finance.findByPk(req.params.id, {
+        include: [
+          {
+            model: Finance,
+            attributes: [
+                'bucket',
+                'category',
+                'amount',
+            ],
+          },
+        ],
+      });
+  
+      const finance = dbFinanceData.get({ plain: true });
+      res.render('finance', { finance, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+  
+  
+  router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/home');
+      return;
+    }
+  
+    res.render('/home');
+  });
+
+  router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('signup');
+  });
+
+  router.get('/', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+   res.render('login');
+  });
+
+   
+  
+  module.exports = router;
+  
