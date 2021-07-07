@@ -26,8 +26,17 @@ const withAuth = require('../utils/auth');
 //       res.status(500).json(err);
 //     }
 //   });
+
+
+router.get('/home', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('home');
+    return;
+  }
+  res.redirect('/login');
+});
   
-  router.get('/finance', withAuth, async (req, res) => {
+  router.get('/home', withAuth, async (req, res) => {
     try {
       const dbFinanceData = await Finance.findByPk(req.params.id, {
         include: [
@@ -57,7 +66,7 @@ const withAuth = require('../utils/auth');
       return;
     }
   
-    res.render('login');
+    res.render('/home');
   });
 
   router.get('/signup', (req, res) => {
@@ -74,7 +83,7 @@ const withAuth = require('../utils/auth');
       res.redirect('/');
       return;
     }
-   res.render('home');
+   res.render('login');
   });
 
    
