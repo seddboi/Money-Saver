@@ -4,10 +4,10 @@ const fetch = require("node-fetch");
 const api_key = 'MHCCXUKMMK0C67G6';
 // let api_URL_Intraday = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${gatherUserSymbol}&interval=1min&apikey=${api_key}`;
 let api_URL_Intraday = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=1min&apikey=${api_key}`;
-let api_URL_Daily = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${gatherUserSymbol}&apikey=${api_key}`
-// let api_URL_Daily = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&apikey=${api_key}`
+// let api_URL_Daily = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${gatherUserSymbol}&apikey=${api_key}`
+let api_URL_Daily = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&apikey=${api_key}`
 
-const gatherUserSymbol = document.getElementById('insertsubmitentryidtaghere').addEventListener('click', fetchAndPopulate());
+//const gatherUserSymbol = document.getElementById('insertsubmitentryidtaghere').addEventListener('click', fetchAndPopulate());
 
 var highVals = [];
 var lowVals = [];
