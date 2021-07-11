@@ -31,33 +31,33 @@ const withAuth = require('../utils/auth');
 router.get('/', (req, res) => {
   if (req.session.loggedIn) {
     res.render('home');
-    return;
+    
   }
   res.redirect('/login');
 });
   
-  router.get('/home', withAuth, async (req, res) => {
-    try {
-      const dbFinanceData = await Finance.findByPk(req.params.id, {
-        include: [
-          {
-            model: Finance,
-            attributes: [
-                'bucket',
-                'category',
-                'amount',
-            ],
-          },
-        ],
-      });
+  // router.get('/home', withAuth, async (req, res) => {
+  //   try {
+  //     const dbFinanceData = await Finance.findByPk(req.params.id, {
+  //       include: [
+  //         {
+  //           model: Finance,
+  //           attributes: [
+  //               'bucket',
+  //               'category',
+  //               'amount',
+  //           ],
+  //         },
+  //       ],
+  //     });
   
-      const finance = dbFinanceData.get({ plain: true });
-      res.render('finance', { finance, loggedIn: req.session.loggedIn });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
+  //     const finance = dbFinanceData.get({ plain: true });
+  //     res.render('finance', { finance, loggedIn: req.session.loggedIn });
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  //   }
+  // });
   
   // ----------------------------------------
   router.get('/home', (req, res) => {
@@ -83,7 +83,7 @@ router.get('/', (req, res) => {
   router.get('/login', (req, res) => {
     // console.log(req.session.loggedIn);
     if (req.session.loggedIn) {
-      res.redirect('/home');
+      res.redirect('home');
       return;
     }
    res.render('login');
