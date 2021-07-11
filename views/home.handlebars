@@ -9,18 +9,13 @@
 </head>
 <body>
 
- <form action="/logout?_method=DELETE" method="POST">
- <button id = "logout" type = "submit">Log Out</button>
- </form>
+    <button id="logout" class="btn-no-style">Logout</button>
+ 
   
 
 <h1>Quote of the day:</h1>
 <p>Quote of the day: Becoming rich is hard. Staying broke is hard. Choose your hard. – Eric Worre</p>
 
-{{#each finances as |finance|}}
-{{> finance-details}}
-{{/each}}
 
-</body>
 
- <script src="/js/logout"></script>
+  <script src="/js/logout.js"></script>
